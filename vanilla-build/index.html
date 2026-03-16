@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CSS/index.css" />
+    <title>Vanilla JS T3</title>
+    <script
+      src="https://kit.fontawesome.com/3bfd3ce9e5.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <main>
+        <!-- Turn Indicator -->
+      <div class="grid">
+        <div class="turn">
+            <i class="fa-solid fa-x turqoise"></i>
+            <p>Player 1, you're up!</p>
+        </div>
+
+        <!-- Dropdown menu -->
+        <div class="menu">
+            <button class="menu-btn" data-id="menu-button">Actions
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <div class="items border hidden" data-id="menu-items">
+                <button data-id="reset-btn">Reset</button>
+                <button data-id="new-round-btn">New Round</button>
+            </div>
+        </div>
+        <!-- Game board -->
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <!-- Scoreboard -->
+        <div class="score"></div>
+        <div class="score"></div>
+        <div class="score"></div>
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        Original project by
+        <a href="https://twitter.com/megdev" target="_blank">@megfdev</a> and <a href="https://twitter.com/Ivan00Sto" target="_blank">@Ivan005to</a>
+      </p>
+
+      <p>
+        Refactored by
+        <a
+          href="https://twitter.com/zg_dev"
+          style="color: var(--turquoise)"
+          target="_blank"
+          >@zg_dev</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>
