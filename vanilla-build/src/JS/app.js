@@ -1,5 +1,5 @@
-import View from './view.js';
-
+import Store from "./store.js";
+import View from "./view.js";
 
 // const App = {
 //   // All of our selected HTML elements
@@ -105,7 +105,6 @@ import View from './view.js';
 //         const turnIcon = document.createElement("i");
 //         const turnLabel = document.createElement("p");
 //         turnLabel.innerText = `Player ${nextPlayer}, you are up!`;
-        
 
 //         if (currentPlayer === 1) {
 //           squareIcon.classList.add("fa-solid", "fa-x", "yellow");
@@ -147,23 +146,26 @@ import View from './view.js';
 
 // window.addEventListener("load", App.init);
 
-function init(){
-  const view = new View()
+function init() {
+  const view = new View();
+  const store = new Store();
 
-  view.bindGameResetEvent(event => {
-    console.log('Reset event')
-    console.log(event)
-  })
-  view.bindNewRoundEvent(event => {
-    console.log('New round event')
-    console.log(event)
-  })
-  view.bindPlayerMoveEvent(event => {
-    console.log('Player move event')
-    console.log(event)
-  })
+  console.log(store.game);
 
-  console.log(view.$.turn);
+  view.bindGameResetEvent((event) => {
+    console.log("Reset event");
+    console.log(event);
+  });
+  view.bindNewRoundEvent((event) => {
+    console.log("New round event");
+    console.log(event);
+  });
+  view.bindPlayerMoveEvent((event) => {
+    view.setTurnIndicator(2);
+    view.handlePlayerMove(event.target, 1);
+  });
+
+  //console.log(view.$.turn);
 }
 
 window.addEventListener("load", init);
