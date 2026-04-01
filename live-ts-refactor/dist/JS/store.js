@@ -12,10 +12,10 @@ const initialValue = {
     },
 };
 class Store extends EventTarget {
-    constructor(key, players) {
+    constructor(storagekey, players) {
         super();
         _Store_instances.add(this);
-        this.storagekey = key;
+        this.storagekey = storagekey;
         this.players = players;
     }
     get stats() {
@@ -63,10 +63,8 @@ class Store extends EventTarget {
     }
     playerMove(squareId) {
         const stateClone = structuredClone(__classPrivateFieldGet(this, _Store_instances, "m", _Store_getState).call(this));
-        stateClone.currentGameMoves.push({
-            squareId,
-            player: this.game.currentPlayer,
-        });
+        stateClone.history.allGames.push(...stateClone.history.currentRoundGames);
+        stateClone.history.currentRoundGames = [];
         __classPrivateFieldGet(this, _Store_instances, "m", _Store_saveState).call(this, stateClone);
     }
     reset() {

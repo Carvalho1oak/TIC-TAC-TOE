@@ -1,7 +1,8 @@
+import type { Player } from "./types";
 import Store from "./store.js";
 import View from "./view.js";
 
-const players = [
+const players: Player[] = [
   {
     id: 1,
     name: "Player 1",
@@ -40,9 +41,9 @@ function init() {
   view.bindNewRoundEvent((event) => {
     store.newRound();
   });
-  view.bindPlayerMoveEvent((square) => {
+  view.bindPlayerMoveEvent((square: Element) => {
     const existingMove = store.game.moves.find(
-      (move) => move.squareId === +square.id,
+      (move) => move.squareId === +(square as HTMLElement).id,
     );
 
     if (existingMove) {
@@ -50,7 +51,7 @@ function init() {
     }
 
     // Advance to the next state by pushing a move to the moves array
-    store.playerMove(+square.id);
+    store.playerMove(+(square as HTMLElement).id);
   });
 
   //console.log(view.$.turn);

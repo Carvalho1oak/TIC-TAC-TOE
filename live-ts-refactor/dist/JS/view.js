@@ -56,12 +56,12 @@ class View {
     }
 }
 _View_instances = new WeakSet(), _View_updateScoreboard = function _View_updateScoreboard(p1Wins, p2Wins, ties) {
-    this.$.p1Wins.innerText = `${p1Wins} wins`;
-    this.$.p2Wins.innerText = `${p2Wins} wins`;
-    this.$.ties.innerText = `${ties} ties`;
+    this.$.p1Wins.textContent = `${p1Wins} wins`;
+    this.$.p2Wins.textContent = `${p2Wins} wins`;
+    this.$.ties.textContent = `${ties} ties`;
 }, _View_openModal = function _View_openModal(message) {
     this.$.modal.classList.remove("hidden");
-    this.$.modalText.innerText = message;
+    this.$.modalText.textContent = message;
 }, _View_closeModal = function _View_closeModal() {
     this.$.modal.classList.add("hidden");
 }, _View_closeAll = function _View_closeAll() {
@@ -81,13 +81,13 @@ _View_instances = new WeakSet(), _View_updateScoreboard = function _View_updateS
 }, _View_closeMenu = function _View_closeMenu() {
     this.$.menuItems.classList.add("hidden");
     this.$.menuBtn.classList.remove("border");
-    const icon = this.$.menuBtn.querySelector("i");
+    const icon = __classPrivateFieldGet(this, _View_instances, "m", _View_qs).call(this, "i", this.$.menuBtn);
     icon.classList.add("fa-chevron-up");
     icon.classList.remove("fa-chevron-down");
 }, _View_toggleMenu = function _View_toggleMenu() {
     this.$.menuItems.classList.toggle("hidden");
     this.$.menuBtn.classList.toggle("border");
-    const icon = this.$.menuBtn.querySelector("i");
+    const icon = __classPrivateFieldGet(this, _View_instances, "m", _View_qs).call(this, "i", this.$.menuBtn);
     icon.classList.toggle("fa-chevron-down");
     icon.classList.toggle("fa-chevron-up");
 }, _View_handlePlayerMove = function _View_handlePlayerMove(squareEl, player) {
@@ -115,6 +115,9 @@ _View_instances = new WeakSet(), _View_updateScoreboard = function _View_updateS
     return elList;
 }, _View_delegate = function _View_delegate(el, selector, eventKey, handler) {
     el.addEventListener(eventKey, (event) => {
+        if (!(event.target instanceof Element)) {
+            throw new Error("Event target not found");
+        }
         if (event.target.matches(selector)) {
             handler(event.target);
         }
