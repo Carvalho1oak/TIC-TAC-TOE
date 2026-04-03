@@ -63,8 +63,10 @@ class Store extends EventTarget {
     }
     playerMove(squareId) {
         const stateClone = structuredClone(__classPrivateFieldGet(this, _Store_instances, "m", _Store_getState).call(this));
-        stateClone.history.allGames.push(...stateClone.history.currentRoundGames);
-        stateClone.history.currentRoundGames = [];
+        stateClone.currentGameMoves.push({
+            squareId,
+            player: this.players[stateClone.currentGameMoves.length % 2],
+        });
         __classPrivateFieldGet(this, _Store_instances, "m", _Store_saveState).call(this, stateClone);
     }
     reset() {

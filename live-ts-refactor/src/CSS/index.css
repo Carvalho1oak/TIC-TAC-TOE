@@ -18,7 +18,7 @@
 }
 html,
 body {
-  height: 100%;
+  min-height: 100%;
   background-color: var(--dark-gray);
 }
 body {
@@ -27,6 +27,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
 }
 
 /* Shared utility classes */
@@ -62,14 +63,14 @@ button:hover {
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 80px);
-  grid-template-rows: 50px repeat(3, 80px) 60px;
+  grid-template-rows: minmax(50px, auto) repeat(3, 80px) 60px;
   gap: 5px;
 }
 @media (min-width: 768px) {
   .grid {
     width: 490px;
     grid-template-columns: repeat(3, 150px);
-    grid-template-rows: 50px repeat(3, 150px) 60px;
+    grid-template-rows: minmax(50px, auto) repeat(3, 150px) 60px;
     gap: 20px;
   }
 }
